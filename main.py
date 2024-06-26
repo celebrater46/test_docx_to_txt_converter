@@ -5,15 +5,17 @@ def say_hello():
 
 say_hello()
 
-def open_docx():
-    # f = open("files/test.docx")
-    # lines = f.readlines()
-    # print(lines)
-    # f.close()
+def create_txt(doc):
+    f = open("files/converted.txt", "w", encoding='utf-8')
+    for paragraph in doc.paragraphs:
+        f.write(paragraph.text + "\n")
+        # print(paragraph.text)
+    f.close()
 
+def open_docx():
     document = docx.Document("files/test.docx")
-    # # for paragraph in word.paragraphs:
-    for paragraph in document.paragraphs:
-        print(paragraph.text)
+    # for paragraph in document.paragraphs:
+    #     print(paragraph.text)
+    create_txt(document)
 
 open_docx()
